@@ -14,16 +14,16 @@
       --text-main: #1A202C;
       --text-muted: #4A5568;
       --text-light: #718096;
-      --border-color: #E2E8F0;
+      --border-color: #CBD5E1;
       
       --primary: #1E3A8A;        /* Deep Navy */
       --primary-hover: #1E40AF;
       --secondary: #0D9488;      /* Muted Teal */
-      --accent-avoidance: #3B82F6;
-      --accent-emotional: #EC4899;
-      --accent-status: #8B5CF6;
-      --accent-vigilance: #10B981;
-      --accent-intentionality: #F59E0B;
+      --accent-avoidance: #2563EB;
+      --accent-emotional: #DB2777;
+      --accent-status: #7C3AED;
+      --accent-vigilance: #059669;
+      --accent-intentionality: #D97706;
 
       --radius-sm: 6px;
       --radius-md: 12px;
@@ -32,7 +32,7 @@
       --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
       --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
       
-      --transition: all 0.25s ease-in-out;
+      --transition: all 0.2s ease-in-out;
     }
 
     /* Reset & Base Styling */
@@ -60,6 +60,12 @@
       margin: 0 auto;
     }
 
+    /* Accessibility Focus Outline */
+    :focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 3px;
+    }
+
     /* Header & Language Selector */
     header {
       width: 100%;
@@ -81,12 +87,17 @@
     .lang-btn {
       background: none;
       border: none;
-      padding: 8px 16px;
-      font-size: 0.9rem;
+      padding: 12px 18px;
+      min-height: 44px;
+      min-width: 88px;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
       transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .lang-btn.active {
@@ -103,6 +114,12 @@
       margin-bottom: 24px;
       border: 1px solid var(--border-color);
       transition: var(--transition);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 20px 16px;
+      }
     }
 
     h1 {
@@ -156,6 +173,7 @@
       font-size: 1rem;
       font-weight: 600;
       padding: 12px 24px;
+      min-height: 48px;
       border-radius: var(--radius-sm);
       border: none;
       cursor: pointer;
@@ -168,10 +186,6 @@
       background-color: var(--primary-hover);
     }
 
-    .btn:focus {
-      outline: 3px solid rgba(30, 58, 138, 0.4);
-    }
-
     .btn-secondary {
       background-color: #E2E8F0;
       color: var(--text-main);
@@ -179,12 +193,6 @@
 
     .btn-secondary:hover {
       background-color: #CBD5E1;
-    }
-
-    .btn:disabled {
-      background-color: #CBD5E1;
-      cursor: not-allowed;
-      opacity: 0.7;
     }
 
     /* Views Controller */
@@ -205,6 +213,7 @@
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--secondary);
+      flex-wrap: wrap;
     }
 
     /* Progress Indicator */
@@ -223,9 +232,9 @@
 
     .progress-bar-bg {
       width: 100%;
-      height: 10px;
+      height: 12px;
       background-color: #E2E8F0;
-      border-radius: 5px;
+      border-radius: 6px;
       overflow: hidden;
     }
 
@@ -237,24 +246,26 @@
     }
 
     /* Questionnaire Styling */
-    .question-card {
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .question-fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .question-text {
+    .question-legend {
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--text-main);
       margin-bottom: 24px;
+      line-height: 1.4;
+      display: block;
+      width: 100%;
     }
 
     .likert-scale {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 24px;
     }
 
@@ -262,6 +273,7 @@
       display: flex;
       align-items: center;
       padding: 12px 16px;
+      min-height: 48px;
       border: 2px solid var(--border-color);
       border-radius: var(--radius-sm);
       cursor: pointer;
@@ -280,10 +292,11 @@
     }
 
     .likert-option input[type="radio"] {
-      margin-right: 12px;
-      width: 18px;
-      height: 18px;
+      margin-right: 14px;
+      width: 20px;
+      height: 20px;
       accent-color: var(--primary);
+      cursor: pointer;
     }
 
     .likert-label {
@@ -295,7 +308,7 @@
 
     .validation-msg {
       color: #DC2626;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 16px;
       display: none;
@@ -312,10 +325,12 @@
       display: flex;
       border-bottom: 2px solid var(--border-color);
       margin-bottom: 24px;
+      gap: 8px;
     }
 
     .tab-btn {
-      padding: 12px 24px;
+      padding: 12px 20px;
+      min-height: 48px;
       font-size: 1rem;
       font-weight: 600;
       background: none;
@@ -350,13 +365,13 @@
 
     .dominant-card h2 {
       color: #FFFFFF;
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 12px;
     }
 
     .dominant-card p {
       color: #E0E7FF;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       margin-bottom: 0;
     }
 
@@ -366,7 +381,7 @@
     }
 
     .chart-row {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .chart-label-group {
@@ -378,10 +393,11 @@
     }
 
     .chart-bar-bg {
-      height: 20px;
+      height: 22px;
       background-color: #E2E8F0;
-      border-radius: 10px;
+      border-radius: 11px;
       overflow: hidden;
+      border: 1px solid #CBD5E1;
     }
 
     .chart-bar-fill {
@@ -450,10 +466,10 @@
 
     .final-quote {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: var(--primary);
-      margin: 32px 0;
+      margin: 28px 0;
       padding: 20px;
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
@@ -478,45 +494,65 @@
       text-align: center;
     }
 
-    /* Print Optimizations */
-    @media print {
-      body {
-        background: #FFFFFF;
-        color: #000000;
-        padding: 0;
-      }
-      header, .tabs-nav, .actions-group, .lang-selector, button {
-        display: none !important;
-      }
-      .card {
-        box-shadow: none;
-        border: none;
-        padding: 0;
-        margin: 0 0 20px 0;
-      }
-      .dominant-card {
-        background: #F1F5F9 !important;
-        color: #000000 !important;
-        border: 1px solid #000000;
-      }
-      .dominant-card h2, .dominant-card h3, .dominant-card p {
-        color: #000000 !important;
-      }
-      .chart-bar-fill {
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-      }
-      .print-header {
-        display: block !important;
-        margin-bottom: 20px;
-      }
-    }
-
-    .print-header {
+    /* Print View Container (Hidden on Screen) */
+    #print-view-container {
       display: none;
     }
 
-    /* Reduced Motion */
+    /* Print Optimizations */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      
+      /* Hide all interactive elements */
+      header, .tabs-nav, .actions-group, .lang-selector, button, #view-intro, #view-quiz, #view-results {
+        display: none !important;
+      }
+
+      /* Display print view container explicitly */
+      #print-view-container {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .print-header {
+        margin-bottom: 20px;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 10px;
+      }
+
+      .print-header h1 {
+        font-size: 1.8rem;
+        color: #000000 !important;
+      }
+
+      .print-card {
+        border: 1px solid #666666 !important;
+        border-radius: 6px !important;
+        padding: 16px !important;
+        margin-bottom: 16px !important;
+        page-break-inside: avoid;
+      }
+
+      .chart-bar-bg {
+        border: 1px solid #000000 !important;
+        background-color: #E2E8F0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .chart-bar-fill {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* Reduced Motion Accessibility */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation: none !important;
@@ -529,7 +565,7 @@
 
   <!-- Language Bar -->
   <header>
-    <div class="lang-selector" role="navigation" aria-label="Language options">
+    <div class="lang-selector" role="navigation" aria-label="Language options / Opciones de idioma">
       <button class="lang-btn active" id="btn-lang-en" onclick="setLanguage('en')">English</button>
       <button class="lang-btn" id="btn-lang-es" onclick="setLanguage('es')">Español</button>
     </div>
@@ -537,14 +573,8 @@
 
   <main class="container">
 
-    <!-- Print Header -->
-    <div class="print-header">
-      <h1 id="print-title">What's Your Emotional Relationship With Money?</h1>
-      <p id="print-date"></p>
-    </div>
-
     <!-- VIEW 1: INTRO SCREEN -->
-    <section id="view-intro" class="view-section active">
+    <section id="view-intro" class="view-section active" aria-labelledby="intro-title">
       <div class="card">
         <h1 id="intro-title">What's Your Emotional Relationship With Money?</h1>
         <div class="subtitle" id="intro-subtitle">An interactive self-assessment about emotions, beliefs, and financial behavior.</div>
@@ -565,25 +595,27 @@
     </section>
 
     <!-- VIEW 2: QUESTIONNAIRE -->
-    <section id="view-quiz" class="view-section">
+    <section id="view-quiz" class="view-section" aria-labelledby="quiz-question-heading">
       <div class="progress-container">
         <div class="progress-status">
           <span id="quiz-progress-text">Question 1 of 20</span>
           <span id="quiz-progress-percent">5%</span>
         </div>
         <div class="progress-bar-bg">
-          <div class="progress-bar-fill" id="quiz-progress-bar"></div>
+          <div class="progress-bar-fill" id="quiz-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="5" aria-label="Assessment progress"></div>
         </div>
       </div>
 
-      <div class="card question-card">
-        <div>
-          <div class="question-text" id="quiz-question-text">Question loading...</div>
-          <div class="likert-scale" id="quiz-options-container">
+      <div class="card">
+        <fieldset class="question-fieldset">
+          <legend class="question-legend" id="quiz-question-heading">Question loading...</legend>
+          
+          <div class="likert-scale" id="quiz-options-container" role="radiogroup" aria-labelledby="quiz-question-heading">
             <!-- Dynamic Likert Options -->
           </div>
-          <div class="validation-msg" id="quiz-validation">Please select an answer before continuing.</div>
-        </div>
+        </fieldset>
+
+        <div class="validation-msg" id="quiz-validation" role="alert">Please select an answer before continuing.</div>
 
         <div class="nav-buttons">
           <button class="btn btn-secondary" id="btn-prev" onclick="previousQuestion()">← Previous</button>
@@ -593,16 +625,16 @@
     </section>
 
     <!-- VIEW 3: RESULTS DASHBOARD -->
-    <section id="view-results" class="view-section">
+    <section id="view-results" class="view-section" aria-labelledby="res-header">
       
       <!-- Tab Navigation -->
-      <div class="tabs-nav">
-        <button class="tab-btn active" id="tab-btn-1" onclick="switchTab(1)">Your Results</button>
-        <button class="tab-btn" id="tab-btn-2" onclick="switchTab(2)">Understanding Your Pattern</button>
+      <div class="tabs-nav" role="tablist" aria-label="Results tabs">
+        <button class="tab-btn active" id="tab-btn-1" role="tab" aria-selected="true" aria-controls="tab-content-1" onclick="switchTab(1)">Your Results</button>
+        <button class="tab-btn" id="tab-btn-2" role="tab" aria-selected="false" aria-controls="tab-content-2" onclick="switchTab(2)">Understanding Your Pattern</button>
       </div>
 
       <!-- TAB 1 CONTENT -->
-      <div id="tab-content-1">
+      <div id="tab-content-1" role="tabpanel" aria-labelledby="tab-btn-1">
         <div class="card">
           <h2 id="res-header">Your Money Relationship Profile</h2>
           
@@ -618,6 +650,11 @@
           <p id="res-chart-sub" style="font-size: 0.9rem;">Average scores from 1.00 (Low) to 5.00 (Very High)</p>
           <div class="chart-container" id="chart-container">
             <!-- Rendered JS Chart -->
+          </div>
+
+          <!-- Methodology & Design Note on Scored Dimensions -->
+          <div style="font-size: 0.88rem; color: var(--text-muted); background: #F1F5F9; padding: 12px 16px; border-radius: var(--radius-sm); margin: 16px 0;" id="res-structure-note">
+            <strong>Note on Scoring:</strong> Questions 1–18 assess primary money relationship patterns, while Questions 19–20 measure Financial Intentionality separately.
           </div>
 
           <!-- Personalized Synthesis -->
@@ -650,7 +687,7 @@
       </div>
 
       <!-- TAB 2 CONTENT -->
-      <div id="tab-content-2" style="display: none;">
+      <div id="tab-content-2" role="tabpanel" aria-labelledby="tab-btn-2" style="display: none;">
         <div class="card">
           <h2 id="tab2-heading">Understanding Your Pattern</h2>
           
@@ -668,6 +705,49 @@
       </div>
 
     </section>
+
+    <!-- PRINT VIEW CONTAINER (Full single-page print rendering) -->
+    <div id="print-view-container">
+      <div class="print-header">
+        <h1 id="print-title">What's Your Emotional Relationship With Money?</h1>
+        <p id="print-date" style="font-weight: 600; color: #4A5568;"></p>
+      </div>
+
+      <div class="print-card">
+        <h2 id="print-dominant-label" style="font-size: 1rem; text-transform: uppercase; color: #4A5568;">Your strongest pattern</h2>
+        <h1 id="print-dominant-title" style="font-size: 1.6rem; color: #1E3A8A; margin-bottom: 8px;">FINANCIAL VIGILANCE</h1>
+        <p id="print-dominant-desc" style="font-size: 0.95rem; color: #1A202C;"></p>
+      </div>
+
+      <div class="print-card">
+        <h3 id="print-chart-title" style="font-size: 1.1rem; color: #1E3A8A; margin-bottom: 12px;">Primary Dimensions Overview</h3>
+        <div id="print-chart-container"></div>
+      </div>
+
+      <div class="print-card">
+        <h3 id="print-intent-title" style="font-size: 1.1rem; color: #D97706; margin-bottom: 6px;">Financial Intentionality</h3>
+        <p id="print-intent-desc" style="font-size: 0.9rem; margin-bottom: 8px;"></p>
+        <p style="font-size: 1.2rem; font-weight: bold; color: #D97706;"><span id="print-intent-score">4.2 / 5.0</span> <span id="print-intent-label">(Strong)</span></p>
+      </div>
+
+      <div class="print-card">
+        <h3 style="font-size: 1.1rem; color: #1E3A8A; margin-bottom: 8px;">Personalized Synthesis</h3>
+        <div id="print-synthesis-text" style="font-size: 0.95rem;"></div>
+      </div>
+
+      <div class="print-card">
+        <h2 id="print-tab2-heading" style="font-size: 1.2rem; color: #1E3A8A; margin-bottom: 12px;">Pattern Details & Practical Reflection</h2>
+        <div id="print-tab2-container"></div>
+      </div>
+
+      <div class="print-card">
+        <h3 id="print-rel-title" style="font-size: 1.1rem; color: #1E3A8A; margin-bottom: 8px;">Money Is Relational</h3>
+        <p id="print-rel-p1" style="font-size: 0.9rem; margin-bottom: 8px;"></p>
+        <p id="print-rel-p2" style="font-size: 0.95rem; font-weight: bold; color: #1E3A8A;"></p>
+      </div>
+
+      <div style="text-align: center; font-style: italic; font-weight: 600; margin-top: 20px; font-size: 0.95rem;" id="print-final-quote"></div>
+    </div>
 
   </main>
 
@@ -696,6 +776,7 @@
         metaT: "Approximately 4-5 minutes",
         btnStart: "Start Assessment",
         progressText: "Question {current} of {total}",
+        progressAria: "Assessment progress: Question {current} of {total}",
         validationMsg: "Please select an answer before continuing.",
         btnPrev: "← Previous",
         btnNext: "Next →",
@@ -705,8 +786,12 @@
         resHeader: "Your Money Relationship Profile",
         resDominantLabel: "Your strongest pattern",
         resDominantLabelPlural: "Your strongest patterns",
+        resNoDominantTitle: "NO DOMINANT PATTERN",
+        resNoDominantDesc: "Your responses do not show a clearly dominant financial pattern. This may reflect a relatively balanced profile, or it may mean that you were uncertain about some of the statements.",
+        resDominantPluralDesc: "Your responses show two or more closely related strongest patterns.",
         chartTitle: "Primary Dimensions Overview",
         chartSub: "Average scores from 1.00 (Low) to 5.00 (Very High)",
+        structureNote: "<strong>Note on Scoring:</strong> Questions 1–18 assess primary money relationship patterns, while Questions 19–20 measure Financial Intentionality separately.",
         intentTitle: "Financial Intentionality",
         intentDesc: "This score reflects how strongly your responses suggest that you can separate immediate emotions from important financial decisions and align spending with your priorities.",
         relTitle: "Money Is Relational",
@@ -808,6 +893,7 @@
         metaT: "Aproximadamente 4-5 minutos",
         btnStart: "Comenzar evaluación",
         progressText: "Pregunta {current} de {total}",
+        progressAria: "Progreso de la evaluación: Pregunta {current} de {total}",
         validationMsg: "Selecciona una respuesta antes de continuar.",
         btnPrev: "← Anterior",
         btnNext: "Siguiente →",
@@ -817,8 +903,12 @@
         resHeader: "Tu perfil de relación con el dinero",
         resDominantLabel: "Tu patrón más marcado",
         resDominantLabelPlural: "Tus patrones más marcados",
+        resNoDominantTitle: "SIN PATRÓN DOMINANTE",
+        resNoDominantDesc: "Tus respuestas no muestran un patrón financiero claramente dominante. Esto puede reflejar un perfil relativamente equilibrado o simplemente indicar que algunas afirmaciones no describieron claramente tu experiencia.",
+        resDominantPluralDesc: "Tus respuestas muestran dos o más patrones principales estrechamente relacionados.",
         chartTitle: "Visión general de dimensiones",
         chartSub: "Puntaje promedio de 1.00 (Bajo) a 5.00 (Muy alto)",
+        structureNote: "<strong>Nota sobre la puntuación:</strong> Las preguntas 1–18 evalúan los patrones principales de relación con el dinero, mientras que las preguntas 19–20 miden la Intencionalidad Financiera por separado.",
         intentTitle: "Intencionalidad financiera",
         intentDesc: "Este puntaje refleja qué tan fuertemente tus respuestas sugieren que puedes separar las emociones inmediatas de las decisiones financieras importantes y alinear tus gastos con tus prioridades.",
         relTitle: "El dinero también es relacional",
@@ -913,6 +1003,47 @@
       }
     };
 
+    /**
+     * Safe Translation Helper with Fallback and Console Warning
+     */
+    function t(keyPath) {
+      const keys = keyPath.split('.');
+      
+      // 1. Try selected language
+      let res = translations[currentLang];
+      for (const k of keys) {
+        if (res && res[k] !== undefined) {
+          res = res[k];
+        } else {
+          res = undefined;
+          break;
+        }
+      }
+
+      if (res !== undefined) return res;
+
+      // 2. Console warning for missing key
+      console.warn(`[Translation Missing] Key "${keyPath}" not found in language "${currentLang}". Falling back to English.`);
+
+      // 3. Fallback to English
+      let fallback = translations['en'];
+      for (const k of keys) {
+        if (fallback && fallback[k] !== undefined) {
+          fallback = fallback[k];
+        } else {
+          return keyPath; // Return key path string as ultimate safety net
+        }
+      }
+      return fallback;
+    }
+
+    /*
+     * Question 10 Categorization Note:
+     * Question 10 ("Having enough money is one of the main conditions I need in order to feel secure or happy.")
+     * contains elements of both emotional well-being ("happy") and risk management ("secure").
+     * In this standardized implementation, it remains categorized under Emotional Money (Money Worship script proxy)
+     * because it measures the core belief that external financial accumulation is a prerequisite for internal peace.
+     */
     const questions = [
       { id: 1, category: "avoidance", en: "When my finances are not going well, I prefer not to look at my accounts.", es: "Cuando mis finanzas no están bien, prefiero no revisar mis cuentas." },
       { id: 2, category: "emotional", en: "Sometimes I buy something because I need to feel better, even though I had not planned to buy it.", es: "A veces compro algo porque necesito sentirme mejor, aunque no lo hubiera planeado." },
@@ -941,69 +1072,65 @@
        ------------------------------------------ */
     let currentLang = 'en';
     let currentQuestionIndex = 0;
-    let userAnswers = {}; // { qId: scoreValue }
-    let calculatedResults = null;
+    let userAnswers = {}; // Preserved across language switches
+    let calculatedResults = null; // Preserved across language switches
 
     /* ------------------------------------------
-       3. LANGUAGE & RENDER ENGINE
+       3. LANGUAGE ENGINE & STATE PRESERVATION
        ------------------------------------------ */
     function setLanguage(lang) {
       currentLang = lang;
       
-      // Update toggle UI
+      // Update toggle buttons UI
       document.getElementById('btn-lang-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-lang-es').classList.toggle('active', lang === 'es');
       document.documentElement.lang = lang;
 
-      const t = translations[lang];
+      // Update static view text using safe translation helper
+      document.getElementById('intro-title').innerText = t('title');
+      document.getElementById('intro-subtitle').innerText = t('subtitle');
+      document.getElementById('intro-p1').innerText = t('introP1');
+      document.getElementById('intro-disclaimer').innerText = t('introDisclaimer');
+      document.getElementById('intro-meta-q').innerText = t('metaQ');
+      document.getElementById('intro-meta-t').innerText = t('metaT');
+      document.getElementById('intro-btn-start').innerText = t('btnStart');
 
-      // Update Intro Screen
-      document.getElementById('intro-title').innerText = t.title;
-      document.getElementById('intro-subtitle').innerText = t.subtitle;
-      document.getElementById('intro-p1').innerText = t.introP1;
-      document.getElementById('intro-disclaimer').innerText = t.introDisclaimer;
-      document.getElementById('intro-meta-q').innerText = t.metaQ;
-      document.getElementById('intro-meta-t').innerText = t.metaT;
-      document.getElementById('intro-btn-start').innerText = t.btnStart;
-
-      // Update Quiz Elements
-      document.getElementById('quiz-validation').innerText = t.validationMsg;
-      document.getElementById('btn-prev').innerText = t.btnPrev;
+      document.getElementById('quiz-validation').innerText = t('validationMsg');
+      document.getElementById('btn-prev').innerText = t('btnPrev');
       updateNextButtonLabel();
 
-      // Update Results Elements
-      document.getElementById('tab-btn-1').innerText = t.tab1;
-      document.getElementById('tab-btn-2').innerText = t.tab2;
-      document.getElementById('res-header').innerText = t.resHeader;
-      document.getElementById('res-chart-title').innerText = t.chartTitle;
-      document.getElementById('res-chart-sub').innerText = t.chartSub;
-      document.getElementById('res-intent-title').innerText = t.intentTitle;
-      document.getElementById('res-intent-desc').innerText = t.intentDesc;
-      document.getElementById('rel-title').innerText = t.relTitle;
-      document.getElementById('rel-p1').innerText = t.relP1;
-      document.getElementById('rel-p2').innerText = t.relP2;
-      document.getElementById('final-quote-text').innerText = t.finalQuote;
-      document.getElementById('btn-restart').innerText = t.btnRestart;
-      document.getElementById('btn-print').innerText = t.btnPrint;
-      document.getElementById('privacy-stmt').innerText = t.privacyStmt;
-      document.getElementById('about-stmt').innerHTML = t.aboutStmt;
-      document.getElementById('tab2-heading').innerText = t.tab2;
+      document.getElementById('tab-btn-1').innerText = t('tab1');
+      document.getElementById('tab-btn-2').innerText = t('tab2');
+      document.getElementById('res-header').innerText = t('resHeader');
+      document.getElementById('res-chart-title').innerText = t('chartTitle');
+      document.getElementById('res-chart-sub').innerText = t('chartSub');
+      document.getElementById('res-structure-note').innerHTML = t('structureNote');
+      document.getElementById('res-intent-title').innerText = t('intentTitle');
+      document.getElementById('res-intent-desc').innerText = t('intentDesc');
+      document.getElementById('rel-title').innerText = t('relTitle');
+      document.getElementById('rel-p1').innerText = t('relP1');
+      document.getElementById('rel-p2').innerText = t('relP2');
+      document.getElementById('final-quote-text').innerText = t('finalQuote');
+      document.getElementById('btn-restart').innerText = t('btnRestart');
+      document.getElementById('btn-print').innerText = t('btnPrint');
+      document.getElementById('privacy-stmt').innerText = t('privacyStmt');
+      document.getElementById('about-stmt').innerHTML = t('aboutStmt');
+      document.getElementById('tab2-heading').innerText = t('tab2');
 
-      // Re-render current active view content
+      // Refresh currently active section without altering user state
       if (document.getElementById('view-quiz').classList.contains('active')) {
-        renderQuestion();
+        renderQuestion(false); // Do not steal focus during language change
       } else if (document.getElementById('view-results').classList.contains('active')) {
         renderResults();
       }
     }
 
     function updateNextButtonLabel() {
-      const t = translations[currentLang];
       const btnNext = document.getElementById('btn-next');
       if (currentQuestionIndex === questions.length - 1) {
-        btnNext.innerText = t.btnResults;
+        btnNext.innerText = t('btnResults');
       } else {
-        btnNext.innerText = t.btnNext;
+        btnNext.innerText = t('btnNext');
       }
     }
 
@@ -1013,7 +1140,7 @@
     function startAssessment() {
       switchView('view-quiz');
       currentQuestionIndex = 0;
-      renderQuestion();
+      renderQuestion(true);
     }
 
     function switchView(viewId) {
@@ -1022,51 +1149,71 @@
       window.scrollTo(0, 0);
     }
 
-    function renderQuestion() {
-      const t = translations[currentLang];
+    function renderQuestion(shouldFocus = true) {
       const q = questions[currentQuestionIndex];
 
-      // Update Progress
+      // Progress calculation
       const currentNum = currentQuestionIndex + 1;
       const totalNum = questions.length;
       const pct = Math.round((currentNum / totalNum) * 100);
 
-      document.getElementById('quiz-progress-text').innerText = t.progressText.replace('{current}', currentNum).replace('{total}', totalNum);
+      const progTextEl = document.getElementById('quiz-progress-text');
+      const progBarEl = document.getElementById('quiz-progress-bar');
+      
+      progTextEl.innerText = t('progressText').replace('{current}', currentNum).replace('{total}', totalNum);
       document.getElementById('quiz-progress-percent').innerText = `${pct}%`;
-      document.getElementById('quiz-progress-bar').style.width = `${pct}%`;
+      
+      progBarEl.style.width = `${pct}%`;
+      progBarEl.setAttribute('aria-valuenow', pct);
+      progBarEl.setAttribute('aria-label', t('progressAria').replace('{current}', currentNum).replace('{total}', totalNum));
 
-      // Update Text
-      document.getElementById('quiz-question-text').innerText = `${q.id}. ${q[currentLang]}`;
+      // Question legend text
+      const legendEl = document.getElementById('quiz-question-heading');
+      legendEl.innerText = `${q.id}. ${q[currentLang]}`;
+      
       document.getElementById('quiz-validation').style.display = 'none';
 
       // Render Options
       const optionsContainer = document.getElementById('quiz-options-container');
       optionsContainer.innerHTML = '';
 
-      t.likert.forEach((label, idx) => {
+      const likertLabels = t('likert');
+      likertLabels.forEach((label, idx) => {
         const val = idx + 1;
         const isSelected = userAnswers[q.id] === val;
 
-        const optDiv = document.createElement('label');
-        optDiv.className = `likert-option ${isSelected ? 'selected' : ''}`;
+        const optLabel = document.createElement('label');
+        optLabel.className = `likert-option ${isSelected ? 'selected' : ''}`;
         
-        optDiv.innerHTML = `
-          <input type="radio" name="question_${q.id}" value="${val}" ${isSelected ? 'checked' : ''} onchange="selectAnswer(${q.id}, ${val})">
+        optLabel.innerHTML = `
+          <input type="radio" name="question_${q.id}" value="${val}" ${isSelected ? 'checked' : ''} onchange="selectAnswer(${q.id}, ${val})" onkeydown="handleRadioKeyDown(event, ${q.id}, ${val})">
           <span class="likert-label">${label}</span>
         `;
-        optionsContainer.appendChild(optDiv);
+        optionsContainer.appendChild(optLabel);
       });
+
+      // Accessible Focus Management
+      if (shouldFocus) {
+        legendEl.setAttribute('tabindex', '-1');
+        legendEl.focus();
+      }
 
       // Update Navigation State
       document.getElementById('btn-prev').style.visibility = currentQuestionIndex === 0 ? 'hidden' : 'visible';
       updateNextButtonLabel();
     }
 
+    function handleRadioKeyDown(event, qId, val) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        selectAnswer(qId, val);
+      }
+    }
+
     function selectAnswer(qId, value) {
       userAnswers[qId] = value;
       document.getElementById('quiz-validation').style.display = 'none';
       
-      // Highlight selection
+      // Update UI selection highlight
       const options = document.querySelectorAll('.likert-option');
       options.forEach(opt => {
         const radio = opt.querySelector('input');
@@ -1088,7 +1235,7 @@
 
       if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
-        renderQuestion();
+        renderQuestion(true);
       } else {
         calculateResults();
         switchView('view-results');
@@ -1099,7 +1246,7 @@
     function previousQuestion() {
       if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
-        renderQuestion();
+        renderQuestion(true);
       }
     }
 
@@ -1115,6 +1262,7 @@
         totals[q.category] += score;
       });
 
+      // Normalized category averages
       const averages = {
         avoidance: totals.avoidance / counts.avoidance,
         emotional: totals.emotional / counts.emotional,
@@ -1123,19 +1271,43 @@
         intentionality: totals.intentionality / counts.intentionality
       };
 
-      // Determine Dominant Category (Excluding Intentionality)
       const primaryCats = ['avoidance', 'emotional', 'status', 'vigilance'];
-      let maxScore = -1;
-      primaryCats.forEach(cat => {
-        if (averages[cat] > maxScore) {
-          maxScore = averages[cat];
-        }
-      });
+      
+      // Sort primary categories descending
+      const sorted = primaryCats.map(cat => ({ key: cat, score: averages[cat] }))
+                                .sort((a, b) => b.score - a.score);
 
-      // Check for ties (within 0.25 points)
-      const dominant = primaryCats.filter(cat => (maxScore - averages[cat]) <= 0.25);
+      const highest = sorted[0];
+      const secondHighest = sorted[1];
+      const lowest = sorted[sorted.length - 1];
 
-      calculatedResults = { totals, averages, dominant };
+      let dominantState = "single"; // "single", "tied", "none"
+      let dominant = [];
+
+      /*
+       * Rule C — No meaningful dominant pattern
+       * Triggered when highest primary average <= 3.25 AND (highest - lowest) <= 0.25
+       */
+      if (highest.score <= 3.25 && (highest.score - lowest.score) <= 0.25) {
+        dominantState = "none";
+        dominant = [];
+      } 
+      /*
+       * Rule B — Two or more closely related patterns (proximity <= 0.25)
+       */
+      else if ((highest.score - secondHighest.score) <= 0.25) {
+        dominantState = "tied";
+        dominant = sorted.filter(item => (highest.score - item.score) <= 0.25).map(item => item.key);
+      } 
+      /*
+       * Rule A — Clear dominant pattern (highest > second_highest + 0.25)
+       */
+      else {
+        dominantState = "single";
+        dominant = [highest.key];
+      }
+
+      calculatedResults = { totals, averages, dominant, dominantState };
     }
 
     /* ------------------------------------------
@@ -1144,36 +1316,35 @@
     function renderResults() {
       if (!calculatedResults) return;
 
-      const t = translations[currentLang];
-      const { averages, dominant } = calculatedResults;
+      const { averages, dominant, dominantState } = calculatedResults;
 
-      // Print Header Date
-      document.getElementById('print-title').innerText = t.title;
-      document.getElementById('print-date').innerText = new Date().toLocaleDateString(currentLang === 'es' ? 'es-ES' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-      // Render Dominant Category Card
+      // Update Dominant Card
       const domLabelEl = document.getElementById('res-dominant-label');
       const domTitleEl = document.getElementById('res-dominant-title');
       const domDescEl = document.getElementById('res-dominant-desc');
 
-      if (dominant.length > 1) {
-        domLabelEl.innerText = t.resDominantLabelPlural;
-        domTitleEl.innerText = dominant.map(c => t.categories[c].name.toUpperCase()).join(" & ");
-        domDescEl.innerText = dominant.map(c => t.categories[c].desc).join(" ");
+      if (dominantState === "none") {
+        domLabelEl.innerText = t('resDominantLabel');
+        domTitleEl.innerText = t('resNoDominantTitle');
+        domDescEl.innerText = t('resNoDominantDesc');
+      } else if (dominantState === "tied") {
+        domLabelEl.innerText = t('resDominantLabelPlural');
+        domTitleEl.innerText = dominant.map(c => t(`categories.${c}.name`).toUpperCase()).join(" & ");
+        domDescEl.innerText = t('resDominantPluralDesc');
       } else {
         const mainCat = dominant[0];
-        domLabelEl.innerText = t.resDominantLabel;
-        domTitleEl.innerText = t.categories[mainCat].name.toUpperCase();
-        domDescEl.innerText = t.categories[mainCat].desc;
+        domLabelEl.innerText = t('resDominantLabel');
+        domTitleEl.innerText = t(`categories.${mainCat}.name`).toUpperCase();
+        domDescEl.innerText = t(`categories.${mainCat}.desc`);
       }
 
-      // Render Horizontal Bar Chart
-      renderChart(averages);
+      // Render Bar Chart
+      renderChart('chart-container', averages);
 
-      // Render Dynamic Synthesis Text
-      renderSynthesis(averages, dominant);
+      // Render Personalized Synthesis Text
+      renderSynthesis(averages, dominant, dominantState);
 
-      // Render Intentionality
+      // Render Intentionality Score
       const intScore = averages.intentionality.toFixed(1);
       document.getElementById('res-intent-score').innerText = `${intScore} / 5.0`;
       
@@ -1182,15 +1353,15 @@
       else if (averages.intentionality >= 3.50) levelKey = 'strong';
       else if (averages.intentionality >= 2.50) levelKey = 'moderate';
 
-      document.getElementById('res-intent-label').innerText = `(${t.intentionalityLevels[levelKey]})`;
+      document.getElementById('res-intent-label').innerText = `(${t(`intentionalityLevels.${levelKey}`)})`;
 
-      // Render Tab 2 Details
-      renderTab2(dominant);
+      // Render Tab 2 Details & Print View
+      renderTab2('tab2-details-container', dominant, dominantState);
+      preparePrintView();
     }
 
-    function renderChart(averages) {
-      const t = translations[currentLang];
-      const container = document.getElementById('chart-container');
+    function renderChart(containerId, averages) {
+      const container = document.getElementById(containerId);
       container.innerHTML = '';
 
       const categoriesConfig = [
@@ -1208,7 +1379,7 @@
         row.className = 'chart-row';
         row.innerHTML = `
           <div class="chart-label-group">
-            <span>${t.categories[cat.key].name}</span>
+            <span>${t(`categories.${cat.key}.name`)}</span>
             <span>${score.toFixed(1)} / 5.0</span>
           </div>
           <div class="chart-bar-bg">
@@ -1219,40 +1390,65 @@
       });
     }
 
-    function renderSynthesis(averages, dominant) {
-      const t = translations[currentLang];
-      const domNames = dominant.map(c => t.categories[c].name).join(" & ");
-      
+    function renderSynthesis(averages, dominant, dominantState) {
       let levelKey = 'developing';
+      if (averages.intentionality >= 4.25) levelKey = 'veryStrong';
       if (averages.intentionality >= 3.50) levelKey = 'strong';
       else if (averages.intentionality >= 2.50) levelKey = 'moderate';
 
-      const intLevelStr = t.intentionalityLevels[levelKey];
+      const intLevelStr = t(`intentionalityLevels.${levelKey}`);
 
       let summaryText = "";
-      if (currentLang === 'es') {
-        summaryText = `Tus respuestas sugieren que tu patrón más marcado es <strong>${domNames}</strong>, mientras que tu nivel de Intencionalidad Financiera es <strong>${intLevelStr}</strong>. Esto indica que ${t.categories[dominant[0]].summaryDesc} No obstante, tus respuestas reflejan una capacidad ${intLevelStr.toLowerCase()} para distanciarte de las emociones inmediatas al tomar decisiones financieras clave.`;
+      if (dominantState === "none") {
+        if (currentLang === 'es') {
+          summaryText = `Tus respuestas indican un perfil <strong>equilibrado sin un patrón claramente dominante</strong>. Tu nivel de Intencionalidad Financiera es <strong>${intLevelStr}</strong>, lo que refleja tu capacidad para distanciarte de impulsos emocionales al tomar decisiones.`;
+        } else {
+          summaryText = `Your responses suggest a <strong>balanced profile with no single dominant pattern</strong>. Your Financial Intentionality level is <strong>${intLevelStr}</strong>, reflecting your capacity to step back from emotional impulses when making monetary decisions.`;
+        }
       } else {
-        summaryText = `Your strongest pattern is <strong>${domNames}</strong>, while your Intentionality score is <strong>${intLevelStr}</strong>. This suggests that ${t.categories[dominant[0]].summaryDesc} However, your answers also indicate a ${intLevelStr.toLowerCase()} ability to step back from immediate emotions when making key financial decisions.`;
+        const domNames = dominant.map(c => t(`categories.${c}.name`)).join(" & ");
+        if (currentLang === 'es') {
+          summaryText = `Tus respuestas sugieren que tu patrón más marcado corresponde a <strong>${domNames}</strong>, mientras que tu nivel de Intencionalidad Financiera es <strong>${intLevelStr}</strong>. Esto indica que ${t(`categories.${dominant[0]}.summaryDesc`)} No obstante, tus respuestas reflejan una capacidad ${intLevelStr.toLowerCase()} para distanciarte de las emociones inmediatas al tomar decisiones financieras clave.`;
+        } else {
+          summaryText = `Your responses suggest that your strongest pattern corresponds to <strong>${domNames}</strong>, while your Intentionality score is <strong>${intLevelStr}</strong>. This suggests that ${t(`categories.${dominant[0]}.summaryDesc`)} However, your answers also indicate a ${intLevelStr.toLowerCase()} ability to step back from immediate emotions when making key financial decisions.`;
+        }
       }
 
       document.getElementById('res-personalized-text').innerHTML = summaryText;
     }
 
-    function renderTab2(dominant) {
-      const t = translations[currentLang];
-      const container = document.getElementById('tab2-details-container');
+    function renderTab2(containerId, dominant, dominantState) {
+      const container = document.getElementById(containerId);
       container.innerHTML = '';
 
-      dominant.forEach(catKey => {
-        const cat = t.categories[catKey];
+      // If no dominant pattern or multi-tie, display appropriate header
+      let displayCats = dominant;
+      if (dominantState === "none") {
+        displayCats = ['avoidance', 'emotional', 'status', 'vigilance'];
+        const note = document.createElement('p');
+        note.style.fontWeight = 'bold';
+        note.style.marginBottom = '20px';
+        note.innerText = currentLang === 'es' 
+          ? 'Al no haber un patrón dominante, a continuación puedes explorar los cuatro aspectos para identificar reflexiones útiles:'
+          : 'Since no single pattern is dominant, you can explore all four dimensions below for useful reflections:';
+        container.appendChild(note);
+      } else if (dominantState === "tied") {
+        const heading = document.createElement('h3');
+        heading.style.color = 'var(--primary)';
+        heading.style.marginBottom = '16px';
+        heading.innerText = t('resDominantLabelPlural');
+        container.appendChild(heading);
+      }
+
+      displayCats.forEach(catKey => {
+        const cat = t(`categories.${catKey}`);
         const card = document.createElement('div');
-        card.style.marginBottom = '32px';
+        card.style.marginBottom = '28px';
 
         card.innerHTML = `
-          <h3 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 4px;">${cat.name}</h3>
-          <div style="font-style: italic; color: var(--text-muted); margin-bottom: 16px;">"${cat.subtitle}"</div>
-          <p>${cat.desc}</p>
+          <h3 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 4px;">${cat.name}</h3>
+          <div style="font-style: italic; color: var(--text-muted); margin-bottom: 12px;">"${cat.subtitle}"</div>
+          <p style="font-size: 0.95rem;">${cat.desc}</p>
 
           <div class="grid-2">
             <div class="detail-box">
@@ -1270,11 +1466,11 @@
           </div>
 
           <div class="reflection-box">
-            <strong>${t.tab2Ask}:</strong> "${cat.reflection}"
+            <strong>${t('tab2Ask')}:</strong> "${cat.reflection}"
           </div>
 
           <div class="detail-box" style="background-color: #EFF6FF; border-color: #BFDBFE;">
-            <h4 style="color: #1E40AF;">💡 ${t.tab2Experiment}</h4>
+            <h4 style="color: #1E40AF;">💡 ${t('tab2Experiment')}</h4>
             <p style="margin-bottom: 0;">${cat.experiment}</p>
           </div>
         `;
@@ -1283,14 +1479,79 @@
     }
 
     function switchTab(tabNum) {
-      document.getElementById('tab-btn-1').classList.toggle('active', tabNum === 1);
-      document.getElementById('tab-btn-2').classList.toggle('active', tabNum === 2);
+      const btn1 = document.getElementById('tab-btn-1');
+      const btn2 = document.getElementById('tab-btn-2');
+
+      btn1.classList.toggle('active', tabNum === 1);
+      btn2.classList.toggle('active', tabNum === 2);
+      
+      btn1.setAttribute('aria-selected', tabNum === 1 ? 'true' : 'false');
+      btn2.setAttribute('aria-selected', tabNum === 2 ? 'true' : 'false');
+
       document.getElementById('tab-content-1').style.display = tabNum === 1 ? 'block' : 'none';
       document.getElementById('tab-content-2').style.display = tabNum === 2 ? 'block' : 'none';
     }
 
     /* ------------------------------------------
-       7. UTILITY & RESET FUNCTIONS
+       7. PRINT PREPARATION
+       ------------------------------------------ */
+    function preparePrintView() {
+      if (!calculatedResults) return;
+
+      const { averages, dominant, dominantState } = calculatedResults;
+
+      document.getElementById('print-title').innerText = t('title');
+      document.getElementById('print-date').innerText = new Date().toLocaleDateString(currentLang === 'es' ? 'es-ES' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      const domLabelEl = document.getElementById('print-dominant-label');
+      const domTitleEl = document.getElementById('print-dominant-title');
+      const domDescEl = document.getElementById('print-dominant-desc');
+
+      if (dominantState === "none") {
+        domLabelEl.innerText = t('resDominantLabel');
+        domTitleEl.innerText = t('resNoDominantTitle');
+        domDescEl.innerText = t('resNoDominantDesc');
+      } else if (dominantState === "tied") {
+        domLabelEl.innerText = t('resDominantLabelPlural');
+        domTitleEl.innerText = dominant.map(c => t(`categories.${c}.name`).toUpperCase()).join(" & ");
+        domDescEl.innerText = t('resDominantPluralDesc');
+      } else {
+        const mainCat = dominant[0];
+        domLabelEl.innerText = t('resDominantLabel');
+        domTitleEl.innerText = t(`categories.${mainCat}.name`).toUpperCase();
+        domDescEl.innerText = t(`categories.${mainCat}.desc`);
+      }
+
+      renderChart('print-chart-container', averages);
+
+      document.getElementById('print-intent-title').innerText = t('intentTitle');
+      document.getElementById('print-intent-desc').innerText = t('intentDesc');
+      document.getElementById('print-intent-score').innerText = `${averages.intentionality.toFixed(1)} / 5.0`;
+
+      let levelKey = 'developing';
+      if (averages.intentionality >= 4.25) levelKey = 'veryStrong';
+      else if (averages.intentionality >= 3.50) levelKey = 'strong';
+      else if (averages.intentionality >= 2.50) levelKey = 'moderate';
+
+      document.getElementById('print-intent-label').innerText = `(${t(`intentionalityLevels.${levelKey}`)})`;
+      document.getElementById('print-synthesis-text').innerHTML = document.getElementById('res-personalized-text').innerHTML;
+
+      document.getElementById('print-tab2-heading').innerText = t('tab2');
+      renderTab2('print-tab2-container', dominant, dominantState);
+
+      document.getElementById('print-rel-title').innerText = t('relTitle');
+      document.getElementById('print-rel-p1').innerText = t('relP1');
+      document.getElementById('print-rel-p2').innerText = t('relP2');
+      document.getElementById('print-final-quote').innerText = t('finalQuote');
+    }
+
+    function printResults() {
+      preparePrintView();
+      window.print();
+    }
+
+    /* ------------------------------------------
+       8. UTILITY & RESET FUNCTIONS
        ------------------------------------------ */
     function resetAssessment() {
       userAnswers = {};
@@ -1299,11 +1560,18 @@
       switchView('view-intro');
     }
 
-    function printResults() {
-      window.print();
-    }
+    // Keyboard Tab Switch Accessibility
+    document.addEventListener('keydown', function(e) {
+      if (e.target.classList.contains('tab-btn')) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          const tabNum = e.target.id === 'tab-btn-1' ? 2 : 1;
+          switchTab(tabNum);
+          document.getElementById(`tab-btn-${tabNum}`).focus();
+        }
+      }
+    });
 
-    // Initialize default language
+    // Initialize Default Language
     setLanguage('en');
   </script>
 </body>
